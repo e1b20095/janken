@@ -11,6 +11,20 @@
   <div th:if="${name}">
     Hi [[${name}]]
   </div>
+  <div>
+    <a href="/game?hand=Gu">ぐー</a>
+    <a href="/game?hand=Choki">ちょき</a>
+    <a href="/game?hand=Pa">ぱー</a>
+  </div>
+  <div th:if="${myhand}">
+    あなたの手 [[${myhand}]]
+  </div>
+  <div th:if="${cpuhand}">
+    相手の手 [[${cpuhand}]]
+  </div>
+  <div th:if="${kekka}">
+    結果 [[${kekka}]]
+  </div>
 </body>
 
 </html>
