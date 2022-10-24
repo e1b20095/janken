@@ -1,23 +1,25 @@
 package oit.is.z0365.kaizi.janken.controller;
 
+import java.security.Principal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.thymeleaf.engine.AttributeName;
 
 @Controller
+@RequestMapping("/janken")
 public class JankenController {
-  @GetMapping("/sample")
-  public String sample() {
+
+  @GetMapping("step1")
+  public String start() {
     return "janken.html";
   }
 
-  @PostMapping("/janken")
-  public String janken(@RequestParam String name, ModelMap model) {
-    model.addAttribute("name", name);
+  @GetMapping("step2")
+  public String login(ModelMap model, Principal prin) {
+    String loginUser = prin.getName(); // ログインユーザ情報
+    model.addAttribute("login_user", loginUser);
     return "janken.html";
   }
 
