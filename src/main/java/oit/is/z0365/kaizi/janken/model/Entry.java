@@ -1,31 +1,39 @@
 package oit.is.z0365.kaizi.janken.model;
 
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class Entry {
-  String userName;
-  int age;
-  double height;
 
-  public String getUserName() {
-    return userName;
+  ArrayList<String> users = new ArrayList<>();
+  int room = 1;
+
+  public void addUser(String name) {
+    // 同名のユーザが居たら何もせずにreturn
+    for (String s : this.users) {
+      if (s.equals(name)) {
+        return;
+      }
+    }
+    // 同名のユーザが居なかった場合はusersにnameを追加する
+    this.users.add(name);
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public int getRoomNo() {
+    return room;
   }
 
-  public int getAge() {
-    return age;
+  public void setRoomNo(int roomNo) {
+    this.room = roomNo;
   }
 
-  public void setAge(int age) {
-    this.age = age;
+  public ArrayList<String> getUsers() {
+    return users;
   }
 
-  public double getHeight() {
-    return height;
-  }
-
-  public void setHeight(double height) {
-    this.height = height;
+  public void setUsers(ArrayList<String> users) {
+    this.users = users;
   }
 }

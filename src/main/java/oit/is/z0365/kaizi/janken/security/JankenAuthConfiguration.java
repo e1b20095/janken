@@ -14,6 +14,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class JankenAuthConfiguration {
 
+  String userName;
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
+
   @Bean
   public InMemoryUserDetailsManager userDetailsService() {
     // このクラスの下部にあるPasswordEncoderを利用して，ユーザのビルダ（ログインするユーザを作成するオブジェクト）を作成する
@@ -64,4 +74,5 @@ public class JankenAuthConfiguration {
   PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
+
 }
