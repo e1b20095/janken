@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">
 
 <head>
   <meta charset="utf-8">
@@ -7,14 +7,19 @@
 </head>
 
 <body>
+  <a href="/logout">ログアウト</a>
   <h1>Janken GAME!</h1>
-  <div th:if="${name}">
-    Hi [[${name}]]
+  <h2>エントリー</h2>
+  <ul>
+    <li th:each="user : ${room.users}">[[${user}]]</li>
+  </ul>
+  <div th:if="${user_name}">
+    Hi [[${user_name}]]
   </div>
   <div>
-    <a href="/game?hand=Gu">ぐー</a>
-    <a href="/game?hand=Choki">ちょき</a>
-    <a href="/game?hand=Pa">ぱー</a>
+    <a href="janken/game?hand=Gu">ぐー</a>
+    <a href="janken/game?hand=Choki">ちょき</a>
+    <a href="janken/game?hand=Pa">ぱー</a>
   </div>
   <div th:if="${myhand}">
     あなたの手 [[${myhand}]]
